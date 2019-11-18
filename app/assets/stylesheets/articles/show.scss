@@ -1,0 +1,99 @@
+.article-edit{
+  padding: 20px;
+  font-size: 20px;
+  &-box{
+    &-title{
+      margin-bottom: 25px;
+      #title-form{
+        width: 80%;
+        padding: 10px;
+      }
+    }
+    &-explanation{
+      margin-bottom: 50px;
+      #explanation-form{
+        width: 80%;
+        padding: 10px;
+      }
+    }
+  }
+  &-detail{
+    &-container{
+      padding: 40px;
+      margin-bottom: 40px;
+      background-color: #fff;
+    }
+    .article-create{
+      margin-bottom: 50px;
+      background-color: #fff;
+      border: 1px solid lightgray;
+      border-radius: 5px;
+      &-tag{
+        display: flex;
+        border-bottom: 1px solid lightgray;
+        li{
+          color: lightgray;
+          padding: 7px;
+          list-style: none;
+          border-right: 1px solid lightgrey;
+        }
+        .border-blue{
+          border-bottom: 4px solid blue;
+          color: black;
+          font-weight: bold;
+        }
+      }
+      &-content{
+        padding: 30px;
+        .article-head-form{
+          &-box{
+            #head-form{
+              width: 80%;
+              border: 1px solid lightgray;
+              border-radius: 5px;
+              padding: 10px;
+              margin-bottom: 15px;
+            }
+          }
+          &-btn{
+            font-size: 15px;
+          }
+        }
+        .article-text-form{
+          &-box{
+            #text-form{
+              width: 80%;
+              border: 1px solid lightgray;
+              border-radius: 5px;
+              padding: 10px;
+              margin-bottom: 15px;
+            }
+          }
+          &-btn{
+            font-size: 15px;
+          }
+        }
+        .article-relation-form{
+          &-box{
+            #relation-form{
+              width: 80%;
+              border: 1px solid lightgray;
+              border-radius: 5px;
+              padding: 15px;
+              margin-bottom: 30px;
+            }
+          }
+          &-btn{
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.top-link{
+  font-size: 15px;
+  margin: 20px auto;
+  display: table;
+}

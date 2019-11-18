@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
-        format.json { render :show, status: :created, location: @article }
+        format.json { render :edit, status: :created, location: @article }
       else
         format.html { render :new }
         format.json { render json: @article.errors, status: :unprocessable_entity }
@@ -40,13 +40,16 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+    binding.pry
     respond_to do |format|
       if @article.update(article_params)
+        binding.pry
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
-        format.json { render :show, status: :ok, location: @article }
+        format.json
       else
+        binding.pry
         format.html { render :edit }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
+        format.json
       end
     end
   end
@@ -69,6 +72,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.fetch(:article, {})
+      params.require(:article).permit(:title,:explanation,:id)
     end
 end

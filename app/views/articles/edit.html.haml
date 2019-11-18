@@ -1,0 +1,18 @@
+-# .articles-top
+-#   .articles-head
+-#     %h1 記事編集（記事ID：
+-#     %h1
+-#       = @article.id
+-#       %span )
+
+-#   .article-edit
+-#     = form_with model:@article, method: :patch, class:'article-edit-form' do |f|
+-#       %h1 ○タイトル
+-#       .article-edit-title
+-#         = f.text_area :title, value: @article.title, id:"title-form"
+-#       %h1 ○説明文
+-#       .article-edit-explanation
+-#         = f.text_area :explanation, value: @article.explanation, id:"explanation-form"
+
+
+-# = link_to 'Back', articles_path

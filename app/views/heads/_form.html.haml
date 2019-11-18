@@ -1,0 +1,10 @@
+= form_for @head do |f|
+  - if @head.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@head.errors.count, "error")} prohibited this head from being saved:"
+      %ul
+        - @head.errors.full_messages.each do |message|
+          %li= message
+
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,9 @@
+.article-container
+  =link_to article_path(article) do
+    .article-box
+      %span 【
+      %p
+        = article.id
+      %span 】
+      %p
+        = article.title

@@ -1,24 +1,32 @@
-# README
+# articlesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|title|string||
+|explanation|string||
+## Association
+- has_many :heads
+- has_many :texts
+- has_many :relations
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# headsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|head|string|null: false|
+|article_id|integer|null: false, foreign_key: true|
+##Association
+- belongs_to :article
 
-Things you may want to cover:
+# textsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|texts|text|null: false|
+|article_id|integer|null: false, foreign_key: true|
+##Association
+- belongs_to :article
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# relationsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|article_id|integer|null: false, foreign_key: true|
+##Association
+- belongs_to :article
