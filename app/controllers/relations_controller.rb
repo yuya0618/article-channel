@@ -28,10 +28,10 @@ class RelationsController < ApplicationController
 
     respond_to do |format|
       if @relation.save
-        format.html { redirect_to @relation, notice: 'Relation was successfully created.' }
+        format.html { redirect_to article_path(params[:article_id]) }
         format.json { render :show, status: :created, location: @relation }
       else
-        format.html { render :new }
+        format.html { redirect_to article_path(params[:article_id]) }
         format.json { render json: @relation.errors, status: :unprocessable_entity }
       end
     end
@@ -69,6 +69,6 @@ class RelationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def relation_params
-      params.fetch(:relation, {})
+      params.permit(:relation).merge(article_id:params[:article_id])
     end
 end

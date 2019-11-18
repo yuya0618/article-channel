@@ -28,10 +28,10 @@ class TextsController < ApplicationController
 
     respond_to do |format|
       if @text.save
-        format.html { redirect_to @text, notice: 'Text was successfully created.' }
+        format.html { redirect_to article_path(params[:article_id]) }
         format.json { render :show, status: :created, location: @text }
       else
-        format.html { render :new }
+        format.html { redirect_to article_path(params[:article_id])  }
         format.json { render json: @text.errors, status: :unprocessable_entity }
       end
     end
@@ -69,6 +69,6 @@ class TextsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def text_params
-      params.fetch(:text, {})
+      params.permit(:text).merge(article_id:params[:article_id])
     end
 end
