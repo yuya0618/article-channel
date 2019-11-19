@@ -46,14 +46,34 @@ $(document).on('turbolinks:load', function() {
       dataType: 'script',
     })
     .done(function(){
-      alert('保存しました');
-      // 送信後、valueを空にする
-      // $('#head-form').val('');
+      // alert('保存しました');
       $('#head_submit').removeAttr("disabled");
     })
     .fail(function(){
       alert('保存できませんでした');
       $('#head_submit').removeAttr("disabled");
+    })
+  })
+
+  // textの非同期投稿
+  $("#form-text").on('submit', function(t){
+    t.preventDefault();
+    var formData = new FormData(this);
+    var url = $(this).attr('action');
+
+    $.ajax({
+      url: url,
+      type: "POST",
+      data: formData,
+      dataType: 'script',
+    })
+    .done(function(){
+      // alert('保存しました');
+      $('#head_submit').removeAttr("disabled");
+    })
+    .fail(function(){
+      alert('保存できませんでした');
+      $('#text_submit').removeAttr("disabled");
     })
   })
 

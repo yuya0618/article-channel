@@ -26,14 +26,10 @@ class TextsController < ApplicationController
   def create
     @text = Text.new(text_params)
 
-    respond_to do |format|
-      if @text.save
-        format.html { redirect_to article_path(params[:article_id]) }
-        format.json { render :show, status: :created, location: @text }
-      else
-        format.html { redirect_to article_path(params[:article_id])  }
-        format.json { render json: @text.errors, status: :unprocessable_entity }
-      end
+    if @text.save
+      render 'text.js.erb'
+    else
+      redirect_to article_path(params[:article_id])
     end
   end
 
