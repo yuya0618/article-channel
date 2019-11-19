@@ -1,7 +1,7 @@
 .content-box
   .text-box
     = text.text
-    .operation-box{id:"operation-box"}
+    .operation-box{id:"#{text.id}"}
       %li 上へ
       %li 下へ
-      %li#text-delete 削除
+      %li#text-delete{action:"/articles/#{@article.id}/texts/#{text.id}"} 削除

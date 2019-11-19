@@ -142,4 +142,25 @@ $(document).on('turbolinks:load', function() {
     })
   })
 
+
+  // relationの非同期削除
+  $(".operation-box #relation-delete").on('click', function(r){
+    var relationId = $(this).parent().attr('id');
+    console.log(relationId);
+    r.preventDefault();
+    var url = $(this).attr('action');
+    console.log(url);
+
+    $.ajax({
+      url: url,
+      type: "DELETE",
+      data: { id:relationId },
+      dataType: 'script',
+    })
+    .done(function(){
+    })
+    .fail(function(){
+    })
+  })
+
 });

@@ -1,5 +1,6 @@
 class RelationsController < ApplicationController
   before_action :set_relation, only: [:show, :edit, :update, :destroy]
+  protect_from_forgery except:[:destroy]
 
   # GET /relations
   # GET /relations.json
@@ -50,10 +51,10 @@ class RelationsController < ApplicationController
   # DELETE /relations/1
   # DELETE /relations/1.json
   def destroy
-    @relation.destroy
-    respond_to do |format|
-      format.html { redirect_to relations_url, notice: 'Relation was successfully destroyed.' }
-      format.json { head :no_content }
+    if @relation.destroy
+      render "relation-delete.js.erb"
+    else
+      redirect_to article_path(params[:article_id])
     end
   end
 
