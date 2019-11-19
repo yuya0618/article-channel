@@ -20,6 +20,7 @@ $(document).on('turbolinks:load', function() {
   //   })
   // })
 
+  // タブ切り替え
   $(function(){
     $('section').hide().eq(0).show();
     $('.article-create-tag li').eq(0).addClass('border-blue');
@@ -32,5 +33,28 @@ $(document).on('turbolinks:load', function() {
     });
   })
 
+  // headの非同期投稿
+  $("#form-head").on('submit', function(h){
+    h.preventDefault();
+    var formData = new FormData(this);
+    var url = $(this).attr('action');
+
+    $.ajax({
+      url: url,
+      type: "POST",
+      data: formData,
+      dataType: 'script',
+    })
+    .done(function(){
+      alert('保存しました');
+      // 送信後、valueを空にする
+      // $('#head-form').val('');
+      $('#head_submit').removeAttr("disabled");
+    })
+    .fail(function(){
+      alert('保存できませんでした');
+      $('#head_submit').removeAttr("disabled");
+    })
+  })
 
 });

@@ -21,18 +21,14 @@ class HeadsController < ApplicationController
   def edit
   end
 
-  # POST /heads
-  # POST /heads.json
   def create
+    # binding.pry
     @head = Head.new(head_params)
-    respond_to do |format|
-      if @head.save
-        format.html { redirect_to article_path(params[:article_id]) }
-        format.json { render :show, status: :created, location: @head }
-      else
-        format.html { redirect_to article_path(params[:article_id]) }
-        format.json { render json: @head.errors, status: :unprocessable_entity }
-      end
+    # @article = Article.find(params[:article_id])
+    if @head.save
+      render 'head.js.erb'
+    else
+      redirect_to article_path(params[:article_id])
     end
   end
 

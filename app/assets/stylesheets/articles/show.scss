@@ -31,13 +31,20 @@
         border:1px solid lightgray;
         padding: 12px;
         background-color:whitesmoke;
+        &:hover{
+          text-decoration: none;
+        }
         h3{
+          color: black;
           border-bottom: 1px solid black;
           font-weight: bold;
           display: inline-block;
         }
         p{
           color: darkslategray;
+          &:hover{
+            text-decoration: none;
+          }
         }
       }
     }
