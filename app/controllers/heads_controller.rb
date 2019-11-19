@@ -1,30 +1,25 @@
 class HeadsController < ApplicationController
   before_action :set_head, only: [:show, :edit, :update, :destroy]
+  # CSRF保護を無効
+  protect_from_forgery except:[:destroy]
 
-  # GET /heads
-  # GET /heads.json
   def index
     @heads = Head.all
   end
 
-  # GET /heads/1
-  # GET /heads/1.json
   def show
   end
 
-  # GET /heads/new
   def new
     @head = Head.new
   end
 
-  # GET /heads/1/edit
   def edit
   end
 
   def create
-    # binding.pry
     @head = Head.new(head_params)
-    # @article = Article.find(params[:article_id])
+    @article = Article.find(params[:article_id])
     if @head.save
       render 'head.js.erb'
     else
@@ -32,8 +27,6 @@ class HeadsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /heads/1
-  # PATCH/PUT /heads/1.json
   def update
     respond_to do |format|
       if @head.update(head_params)
@@ -46,13 +39,12 @@ class HeadsController < ApplicationController
     end
   end
 
-  # DELETE /heads/1
-  # DELETE /heads/1.json
   def destroy
-    @head.destroy
-    respond_to do |format|
-      format.html { redirect_to heads_url, notice: 'Head was successfully destroyed.' }
-      format.json { head :no_content }
+    # binding.pry
+    if @head.destroy
+      render "head-delete.js.erb"
+    else
+      redirect_to article_path(params[:article_id])
     end
   end
 

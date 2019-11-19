@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function() {
-
+  // 自動保存
   // $('#title-form').keyup(function(){
   //   let titleData = $("#title-form").val();
   //   let explanationData = $("#explanation-form").val();
@@ -38,6 +38,7 @@ $(document).on('turbolinks:load', function() {
     h.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
+    // console.log(url);
 
     $.ajax({
       url: url,
@@ -54,6 +55,27 @@ $(document).on('turbolinks:load', function() {
       $('#head_submit').removeAttr("disabled");
     })
   })
+
+  // headの非同期削除
+  $(".operation-box #head-delete").on('click', function(h){
+    var headId = $(this).parent().attr('id');
+    console.log(headId);
+    h.preventDefault();
+    var url = $(this).attr('action');
+    console.log(url);
+
+    $.ajax({
+      url: url,
+      type: "DELETE",
+      data: { id:headId },
+      dataType: 'script',
+    })
+    .done(function(){
+    })
+    .fail(function(){
+    })
+  })
+
 
   // textの非同期投稿
   $("#form-text").on('submit', function(t){
@@ -76,6 +98,27 @@ $(document).on('turbolinks:load', function() {
       $('#text_submit').removeAttr("disabled");
     })
   })
+
+  // textの非同期削除
+  $(".operation-box #text-delete").on('click', function(t){
+    t.preventDefault();
+    var textId = $(this).parent().attr('id');
+    console.log(textId);
+    var url = $(this).attr('action');
+    console.log(url);
+
+    $.ajax({
+      url: url,
+      type: "DELETE",
+      data: { id:textId },
+      dataType: 'script',
+    })
+    .done(function(){
+    })
+    .fail(function(){
+    })
+  })
+
 
   // relationの非同期投稿
   $("#form-relation").on('submit', function(r){

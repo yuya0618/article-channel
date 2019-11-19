@@ -21,22 +21,37 @@
       .article-edit-detail-container
         -# 見出し一覧
         -@article.heads.each do |head|
-          .head-box
-            = head.head
+          .content-box
+            .head-box
+              = head.head
+              .operation-box{id:"#{head.id}"}
+                %li 上へ
+                %li 下へ
+                %li#head-delete{action:"/articles/#{@article.id}/heads/#{head.id}"} 削除
 
         -# 本文一覧
         -@article.texts.each do |text|
-          .text-box
-            = text.text
+          .content-box
+            .text-box
+              = text.text
+              .operation-box{id:"#{text.id}"}
+                %li 上へ
+                %li 下へ
+                %li#text-delete{action:"/articles/#{@article.id}/texts/#{text.id}"} 削除
 
         -# 関連記事一覧
         -@article.relations.each do |relation|
-          -# =link_to article_path(relation.relation) do
-          .relation-box
-            %h3
-              = Article.find(relation.relation).title
-            %p
-              = Article.find(relation.relation).explanation
+          .content-box
+            =link_to article_path(relation.relation) do
+              .relation-box
+                %h3
+                  = Article.find(relation.relation).title
+                %p
+                  = Article.find(relation.relation).explanation
+                .operation-box{id:"operation-box"}
+                  %li 上へ
+                  %li 下へ
+                  %li#relation-delete 削除
 
       .article-create
         .article-create-tag

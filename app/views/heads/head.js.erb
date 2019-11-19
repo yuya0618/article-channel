@@ -1,2 +1,2 @@
-$(".article-edit-detail-container").append("<%= j(render partial:'heads/head', locals: { head: @head }) %>");
+$(".article-edit-detail-container").append("<%= j(render partial:'heads/head', locals: { head: @head, article: @article }) %>");
 $('#head-form').val('');

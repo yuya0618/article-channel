@@ -1,9 +1,13 @@
 .article-container
   =link_to article_path(article) do
     .article-box
-      %span 【
-      %p
-        = article.id
-      %span 】
-      %p
-        = article.title
+      .article-box-title
+        %span 【
+        %p
+          = article.id
+        %span 】
+        %p
+          = article.title
+      .article-box-explanation
+        %p
+          = article.explanation

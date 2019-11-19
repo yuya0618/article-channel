@@ -1,5 +1,6 @@
 class TextsController < ApplicationController
   before_action :set_text, only: [:show, :edit, :update, :destroy]
+  protect_from_forgery except:[:destroy]
 
   # GET /texts
   # GET /texts.json
@@ -50,10 +51,10 @@ class TextsController < ApplicationController
   # DELETE /texts/1
   # DELETE /texts/1.json
   def destroy
-    @text.destroy
-    respond_to do |format|
-      format.html { redirect_to texts_url, notice: 'Text was successfully destroyed.' }
-      format.json { head :no_content }
+    if @text.destroy
+      render "text-delete.js.erb"
+    else
+      redirect_to article_path(params[:article_id])
     end
   end
 

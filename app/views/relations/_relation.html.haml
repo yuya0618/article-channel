@@ -1,5 +1,11 @@
-.relation-box
-  %h3
-    = Article.find(relation.relation).title
-  %p
-    = Article.find(relation.relation).explanation
+.content-box
+  =link_to article_path(relation.relation) do
+    .relation-box
+      %h3
+        = Article.find(relation.relation).title
+      %p
+        = Article.find(relation.relation).explanation
+      .operation-box{id:"operation-box"}
+        %li 上へ
+        %li 下へ
+        %li#relation-delete 削除
