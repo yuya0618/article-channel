@@ -61,7 +61,7 @@
               .article-relation-form-box
                 = f.collection_select :relation, Article.all, :id, :title, {prompt: '---'}, id:"relation-form"
               .article-relation-form-btn
-                = f.submit "保存する", { class: "btn btn-primary", id: 'text-submit'}
+                = f.submit "保存する", { class: "btn btn-primary", id: 'relation-submit'}
 
 
 

@@ -26,14 +26,10 @@ class RelationsController < ApplicationController
   def create
     @relation = Relation.new(relation_params)
 
-    respond_to do |format|
-      if @relation.save
-        format.html { redirect_to article_path(params[:article_id]) }
-        format.json { render :show, status: :created, location: @relation }
-      else
-        format.html { redirect_to article_path(params[:article_id]) }
-        format.json { render json: @relation.errors, status: :unprocessable_entity }
-      end
+    if @relation.save
+      render 'relation.js.erb'
+    else
+      redirect_to article_path(params[:article_id])
     end
   end
 
