@@ -1,24 +1,4 @@
 $(document).on('turbolinks:load', function() {
-  // 自動保存
-  // $('#title-form').keyup(function(){
-  //   let titleData = $("#title-form").val();
-  //   let explanationData = $("#explanation-form").val();
-
-  //   $.ajax({
-  //     url: "/articles/update",
-  //     type: "PATCH",
-  //     data: {titleData,explanationData},
-  //     dataType: 'json',
-  //     processData: false,
-  //     contentType: false
-  //   })
-  //   .done(function(){
-  //     alert('保存しました')
-  //   })
-  //   .fail(function(){
-  //     alert('保存できませんでした');
-  //   })
-  // })
 
   // タブ切り替え
   $(function(){
@@ -38,7 +18,6 @@ $(document).on('turbolinks:load', function() {
     h.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
-    // console.log(url);
 
     $.ajax({
       url: url,

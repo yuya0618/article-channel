@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-
+  # CSRF保護を無効
+  protect_from_forgery except:[:update]
   # GET /articles
   # GET /articles.json
   def index
@@ -19,6 +20,10 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    # binding.pry
+    @heads = @article.heads
+    @texts = @article.texts
+    @relations = @article.relations
   end
 
   # POST /articles
@@ -40,18 +45,8 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
-    binding.pry
-    respond_to do |format|
-      if @article.update(article_params)
-        binding.pry
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
-        format.json
-      else
-        binding.pry
-        format.html { render :edit }
-        format.json
-      end
-    end
+    # binding.pry
+    @article.update(article_params)
   end
 
   # DELETE /articles/1
@@ -64,6 +59,12 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def sort
+    position = Position.find(params[:id])
+    position.update(position_params)
+    render body: nil
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
@@ -72,6 +73,10 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title,:explanation,:id)
+      params.permit(:title,:explanation)
+    end
+
+    def position_params
+      params.permit(:position_position, :head_id, :text_id, :relation_id, :article_id)
     end
 end

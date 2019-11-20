@@ -26,8 +26,11 @@ class RelationsController < ApplicationController
   # POST /relations.json
   def create
     @relation = Relation.new(relation_params)
-
+    @article = Article.find(params[:article_id])
     if @relation.save
+      # relation作成時にそのidに紐付いたpositionも作成する
+      @position = Position.new(relation_id:@relation.id, article_id:@article.id)
+      @position.save
       render 'relation.js.erb'
     else
       redirect_to article_path(params[:article_id])

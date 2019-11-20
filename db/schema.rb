@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_155007) do
+ActiveRecord::Schema.define(version: 2019_11_20_075509) do
 
   create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -25,6 +25,20 @@ ActiveRecord::Schema.define(version: 2019_11_18_155007) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_heads_on_article_id"
+  end
+
+  create_table "positions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "position"
+    t.bigint "head_id"
+    t.bigint "text_id"
+    t.bigint "relation_id"
+    t.bigint "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_positions_on_article_id"
+    t.index ["head_id"], name: "index_positions_on_head_id"
+    t.index ["relation_id"], name: "index_positions_on_relation_id"
+    t.index ["text_id"], name: "index_positions_on_text_id"
   end
 
   create_table "relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -44,6 +58,10 @@ ActiveRecord::Schema.define(version: 2019_11_18_155007) do
   end
 
   add_foreign_key "heads", "articles"
+  add_foreign_key "positions", "articles"
+  add_foreign_key "positions", "heads"
+  add_foreign_key "positions", "relations"
+  add_foreign_key "positions", "texts"
   add_foreign_key "relations", "articles"
   add_foreign_key "texts", "articles"
 end

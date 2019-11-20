@@ -18,9 +18,14 @@ class HeadsController < ApplicationController
   end
 
   def create
+    # binding.pry
     @head = Head.new(head_params)
     @article = Article.find(params[:article_id])
     if @head.save
+      # head作成時にそのidに紐付いたpositionも作成する
+      @position = Position.new(head_id:@head.id, article_id:@article.id)
+      # binding.pry
+      @position.save
       render 'head.js.erb'
     else
       redirect_to article_path(params[:article_id])
@@ -40,12 +45,8 @@ class HeadsController < ApplicationController
   end
 
   def destroy
-    # binding.pry
-    if @head.destroy
-      render "head-delete.js.erb"
-    else
-      redirect_to article_path(params[:article_id])
-    end
+    render "head-delete.js.erb"
+    @head.destroy
   end
 
   private

@@ -26,8 +26,11 @@ class TextsController < ApplicationController
   # POST /texts.json
   def create
     @text = Text.new(text_params)
-
+    @article = Article.find(params[:article_id])
     if @text.save
+      # text作成時にそのidに紐付いたpositionも作成する
+      @position = Position.new(text_id:@text.id, article_id:@article.id)
+      @position.save
       render 'text.js.erb'
     else
       redirect_to article_path(params[:article_id])
