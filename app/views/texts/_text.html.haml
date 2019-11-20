@@ -2,6 +2,6 @@
   .text-box
     = text.text
     .operation-box{id:"#{text.id}"}
-      %li 上へ
-      %li 下へ
+      -# %li 上へ
+      -# %li 下へ
       %li#text-delete{action:"/articles/#{@article.id}/texts/#{text.id}"} 削除

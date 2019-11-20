@@ -24,9 +24,9 @@
           .content-box{data = { model_name: head.class.name.underscore, update_url:article_sort_path(@article) }}
             .head-box
               = head.head
-              .operation-box{id:"#{head.id}"}
-                %li 上へ
-                %li 下へ
+              .operation-box.btn{id:"#{head.id}"}
+                -# %li 上へ
+                -# %li 下へ
                 %li#head-delete{action:"/articles/#{@article.id}/heads/#{head.id}"} 削除
 
         -# 本文一覧
@@ -35,8 +35,8 @@
             .text-box
               = text.text
               .operation-box{id:"#{text.id}"}
-                %li 上へ
-                %li 下へ
+                -# %li 上へ
+                -# %li 下へ
                 %li#text-delete{action:"/articles/#{@article.id}/texts/#{text.id}"} 削除
 
         -# 関連記事一覧
@@ -49,8 +49,8 @@
                 %p
                   = Article.find(relation.relation).explanation
                 .operation-box{id:"#{relation.id}"}
-                  %li 上へ
-                  %li 下へ
+                  -# %li 上へ
+                  -# %li 下へ
                   %li#relation-delete{action:"/articles/#{@article.id}/relations/#{relation.id}"} 削除
 
       .article-create

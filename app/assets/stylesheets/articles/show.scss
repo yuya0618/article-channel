@@ -23,6 +23,7 @@
       margin-bottom: 40px;
       background-color: #fff;
       .content-box{
+        cursor: pointer;
         .head-box{
           border-bottom: 3px solid orange;
           margin-bottom: 30px;
@@ -49,17 +50,20 @@
           }
         }
         .operation-box{
-          display: inline-flex;
+          display: none;
           border: 1px solid lightgrey;
           margin-left: 15px;
           li{
             list-style: none;
-            border-right: 1px solid lightgrey;
+            // border-right: 1px solid lightgrey;
             cursor: pointer;
             &:hover{
               opacity: 0.7;
             }
           }
+        }
+        .operation-active{
+          display: inline-block;
         }
       }
     }

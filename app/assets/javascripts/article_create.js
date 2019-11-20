@@ -13,6 +13,16 @@ $(document).on('turbolinks:load', function() {
     });
   })
 
+  // 削除ボタン表示
+  $('.content-box').hover(
+    function() {
+      $(this).find('.operation-box').addClass('operation-active');
+    },
+    function() {
+      $(this).find('.operation-box').removeClass('operation-active');
+    }
+  );
+
   // headの非同期投稿
   $("#form-head").on('submit', function(h){
     h.preventDefault();
