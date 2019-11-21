@@ -1,5 +1,5 @@
 class Article < ApplicationRecord
-  include RankedModel
+  # include RankedModel
 
   has_many :heads, dependent: :destroy
   has_many :texts, dependent: :destroy

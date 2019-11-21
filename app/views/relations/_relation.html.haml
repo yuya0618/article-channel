@@ -5,7 +5,7 @@
         = Article.find(relation.relation).title
       %p
         = Article.find(relation.relation).explanation
-      .operation-box{id:"#{relation.id}"}
+      .operation-box.btn{id:"#{relation.id}"}
         -# %li 上へ
         -# %li 下へ
         %li#relation-delete{action:"/articles/#{@article.id}/relations/#{relation.id}"} 削除

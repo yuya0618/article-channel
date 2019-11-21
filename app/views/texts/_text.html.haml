@@ -1,7 +1,7 @@
 .content-box{data = { model_name: text.class.name.underscore, update_url:article_sort_path(@article) }}
   .text-box
     = text.text
-    .operation-box{id:"#{text.id}"}
+    .operation-box.btn{id:"#{text.id}"}
       -# %li 上へ
       -# %li 下へ
       %li#text-delete{action:"/articles/#{@article.id}/texts/#{text.id}"} 削除

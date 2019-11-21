@@ -2,7 +2,7 @@
 .content-box{data = { model_name: head.class.name.underscore, update_url:article_sort_path(@article) }}
   .head-box
     = head.head
-    .operation-box{id:"#{head.id}"}
+    .operation-box.btn{id:"#{head.id}"}
       -# %li 上へ
       -# %li 下へ
       %li#head-delete{action:"/articles/#{@article.id}/heads/#{head.id}"} 削除

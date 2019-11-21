@@ -14,7 +14,7 @@ $(document).on('turbolinks:load', function() {
   })
 
   // 削除ボタン表示
-  $('.content-box').hover(
+  $('.article-edit-detail-container').children().hover(
     function() {
       $(this).find('.operation-box').addClass('operation-active');
     },
@@ -52,6 +52,7 @@ $(document).on('turbolinks:load', function() {
     h.preventDefault();
     var url = $(this).attr('action');
     console.log(url);
+    $(this).parent().parent().hide();
 
     $.ajax({
       url: url,
@@ -95,6 +96,7 @@ $(document).on('turbolinks:load', function() {
     console.log(textId);
     var url = $(this).attr('action');
     console.log(url);
+    $(this).parent().parent().hide();
 
     $.ajax({
       url: url,
@@ -139,6 +141,7 @@ $(document).on('turbolinks:load', function() {
     r.preventDefault();
     var url = $(this).attr('action');
     console.log(url);
+    $(this).parent().parent().hide();
 
     $.ajax({
       url: url,

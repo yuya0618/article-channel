@@ -47,6 +47,7 @@ class ArticlesController < ApplicationController
   def update
     # binding.pry
     @article.update(article_params)
+    render body: nil
   end
 
   # DELETE /articles/1
