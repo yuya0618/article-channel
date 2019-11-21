@@ -3,8 +3,6 @@
 
 # DB設計
 
-[article_table.pdf](https://github.com/yuya0618/article-channel/files/3873298/article_table.pdf)
-
 ## articlesテーブル
 |Column|Type|Options|
 |------|----|-------|
