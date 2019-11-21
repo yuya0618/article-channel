@@ -1,5 +1,5 @@
-.content-box{data = { model_name: relation.class.name.underscore, update_url:article_sort_path(@article) }}
-  =link_to article_path(relation.relation) do
+%div{class:"content-box", data:{model_name: relation.class.name.underscore, update_url:article_relation_sort_path(@article) }}
+  =link_to edit_article_path(relation.relation) do
     .relation-box
       %h3
         = Article.find(relation.relation).title

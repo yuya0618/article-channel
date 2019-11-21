@@ -60,9 +60,24 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def sort
-    position = Position.find(params[:id])
-    position.update(position_params)
+  def head_sort
+    # binding.pry
+    position = Position.find(params.require(:head)[:id])
+    position.update(position: head_position_params[:position_position])
+    render body: nil
+  end
+
+  def text_sort
+    # binding.pry
+    position = Position.find(params.require(:text)[:id])
+    position.update(position: text_position_params[:position_position])
+    render body: nil
+  end
+
+  def relation_sort
+    # binding.pry
+    position = Position.find(params.require(:relation)[:id])
+    position.update(position: relation_position_params[:position_position])
     render body: nil
   end
 
@@ -77,7 +92,15 @@ class ArticlesController < ApplicationController
       params.permit(:title,:explanation)
     end
 
-    def position_params
-      params.permit(:position_position, :head_id, :text_id, :relation_id, :article_id)
+    def head_position_params
+      params.require(:head).permit(:position_position)
+    end
+
+    def text_position_params
+      params.require(:text).permit(:position_position)
+    end
+
+    def relation_position_params
+      params.require(:relation).permit(:position_position)
     end
 end

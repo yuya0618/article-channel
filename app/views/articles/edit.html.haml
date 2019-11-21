@@ -21,7 +21,7 @@
       .article-edit-detail-container
         -# 見出し一覧
         -@heads.each do |head|
-          .content-box{data = { model_name: head.class.name.underscore, update_url:article_sort_path(@article) }}
+          %div{class:"content-box", id:"#{head.position.id}",index:"#{head.position.position}", data:{model_name: head.class.name.underscore, update_url:article_head_sort_path(@article) }}
             .head-box
               = head.head
               .operation-box.btn{id:"#{head.id}"}
@@ -31,7 +31,7 @@
 
         -# 本文一覧
         -@texts.each do |text|
-          .content-box{data = { model_name: text.class.name.underscore, update_url:article_sort_path(@article) }}
+          %div{class:"content-box",id:"#{text.position.id}",index:"#{text.position.position}", data:{model_name: text.class.name.underscore, update_url:article_text_sort_path(@article) }}
             .text-box
               = text.text
               .operation-box.btn{id:"#{text.id}"}
@@ -41,8 +41,8 @@
 
         -# 関連記事一覧
         -@relations.each do |relation|
-          .content-box{data = { model_name: relation.class.name.underscore, update_url:article_sort_path(@article) }}
-            =link_to article_path(relation.relation) do
+          %div{class:"content-box", id:"#{relation.position.id}",index:"#{relation.position.position}", data:{model_name: relation.class.name.underscore, update_url:article_relation_sort_path(@article) }}
+            =link_to edit_article_path(relation.relation) do
               .relation-box
                 %h3
                   = Article.find(relation.relation).title
