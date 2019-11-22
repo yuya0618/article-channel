@@ -1,4 +1,4 @@
-%div{class:"content-box", data:{model_name: text.class.name.underscore, update_url:article_text_sort_path(@article) }}
+%div{class:"content-box",id:"#{text.position.id}",index:"#{text.position.position}", data:{model_name: text.class.name.underscore, update_url:article_text_sort_path(@article) }}
   .text-box
     = text.text
     .operation-box.btn{id:"#{text.id}"}

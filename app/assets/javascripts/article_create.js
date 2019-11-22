@@ -1,32 +1,10 @@
 $(document).on('turbolinks:load', function() {
 
-  // タブ切り替え
-  $(function(){
-    $('section').hide().eq(0).show();
-    $('.article-create-tag li').eq(0).addClass('border-blue');
-    // クリックしたタブが何番目のタブかをcontentに取得
-    $('.article-create-tag li').on('click',function(){
-      var content = $('.article-create-tag li').index(this);
-      // 取得した番号と同じ番号のセクションを取得
-      $('section').eq(content).show().siblings().hide();
-      $('.article-create-tag li').eq(content).addClass('border-blue').siblings().removeClass('border-blue');
-    });
-  })
-
-  // 削除ボタン表示
-  $('.article-edit-detail-container').children().hover(
-    function() {
-      $(this).find('.operation-box').addClass('operation-active');
-    },
-    function() {
-      $(this).find('.operation-box').removeClass('operation-active');
-    }
-  );
-
   // headの非同期投稿
   $("#form-head").on('submit', function(h){
-    h.preventDefault();
+    // h.preventDefault();
     var formData = new FormData(this);
+    // var formData = $("#head-form").value();
     var url = $(this).attr('action');
 
     $.ajax({
@@ -36,8 +14,9 @@ $(document).on('turbolinks:load', function() {
       dataType: 'script',
     })
     .done(function(){
-      // alert('保存しました');
+      alert('保存しました');
       $('#head_submit').removeAttr("disabled");
+      // return false;
     })
     .fail(function(){
       alert('保存できませんでした');

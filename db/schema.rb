@@ -28,8 +28,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_075509) do
   end
 
   create_table "positions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "position"
-    t.bigint "head_id"
+    t.integer "position"３
     t.bigint "text_id"
     t.bigint "relation_id"
     t.bigint "article_id"

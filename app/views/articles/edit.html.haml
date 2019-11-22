@@ -62,7 +62,7 @@
           %section.article-head
             = form_with url:article_heads_path(@article), class:'article-head-form', id:"form-head", remote:true do |f|
               .article-head-form-box
-                = f.text_area :head, placeholder: "見出しを入力", id:"head-form",required:true
+                = f.text_area :head, placeholder: "見出しを入力", id:"head-form",class:"#{@article.id}", required:true
               .article-head-form-btn
                 = f.submit "保存する", { class: "btn btn-primary", id: 'head-submit'}
           %section.article-text

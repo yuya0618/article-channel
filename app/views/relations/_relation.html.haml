@@ -1,4 +1,4 @@
-%div{class:"content-box", data:{model_name: relation.class.name.underscore, update_url:article_relation_sort_path(@article) }}
+%div{class:"content-box", id:"#{relation.position.id}",index:"#{relation.position.position}", data:{model_name: relation.class.name.underscore, update_url:article_relation_sort_path(@article) }}
   =link_to edit_article_path(relation.relation) do
     .relation-box
       %h3

@@ -1,5 +1,5 @@
 -# -binding.pry
-%div{class:"content-box", data:{model_name: head.class.name.underscore, update_url:article_head_sort_path(@article) }}
+%div{class:"content-box", id:"#{head.position.id}",index:"#{head.position.position}", data:{model_name: head.class.name.underscore, update_url:article_head_sort_path(@article) }}
   .head-box
     = head.head
     .operation-box.btn{id:"#{head.id}"}
