@@ -36,7 +36,7 @@
 ## textsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|texts|text|null: false|
+|text|text|null: false|
 |article_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :article
@@ -45,6 +45,7 @@
 ## relationsテーブル
 |Column|Type|Options|
 |------|----|-------|
+|relation|integer|null: false|
 |article_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :article
